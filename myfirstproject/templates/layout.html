@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title|default:"AutoWorld" }}</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <style>
+  /* Custom Navbar */
+.custom-navbar {
+  background: linear-gradient(90deg, #000000, #1a1a1a);
+  border-bottom: 2px solid #ffc107;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+/* Navbar Brand */
+.navbar-brand {
+  letter-spacing: 1px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
+  color: #fff !important;
+}
+
+/* Navbar Links */
+.nav-anim {
+  color: #f8f9fa !important;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-anim::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  background: #ffc107;
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-anim:hover {
+  color: #ffc107 !important;
+}
+
+.nav-anim:hover::after {
+  width: 100%;
+}
+/* Footer Styling */
+.custom-footer {
+  background: linear-gradient(90deg, #000000, #1a1a1a);
+  border-top: 2px solid #ffc107;
+  box-shadow: 0 -3px 15px rgba(255, 193, 7, 0.2);
+}
+
+.custom-footer p {
+  margin: 0;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.custom-footer p:hover {
+  color: #ffc107;
+}
+
+/* Footer Social Links */
+.footer-link {
+  color: #f8f9fa;
+  font-size: 20px;
+  margin: 0 8px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #ffc107;
+  transform: scale(1.2);
+}
+</style>
+
+</head>
+<body>
+  <!-- Navbar -->
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark custom-navbar shadow">
+  <div class="container-fluid px-4 py-3">
+    <a class="navbar-brand fw-bold fs-3 text-warning" href="{% url 'AllCars' %}">
+      MarufDev | CarGalaxy
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav gap-4">
+        <li class="nav-item">
+          <a class="nav-link nav-anim" href="{% url 'AllCars' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-anim" href="{% url 'about' %}">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-anim" href="{% url 'contact' %}">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <main class="main-content p-0 m-0">
+  {% block content %}{% endblock %}
+</main>
+
+
+  <!-- Footer -->
+<!-- Footer -->
+<footer class="custom-footer text-center py-4 mt-5">
+  <p class="mb-1 text-light fw-semibold">© 2025 <span class="text-warning">DriveNova</span>. Designed by <span class="text-warning">Mohamed Maruf Kureshi 🚀</span></p>
+  <div class="social-links mt-2">
+    <a href="#" class="footer-link"><i class="bi bi-facebook"></i></a>
+    <a href="#" class="footer-link"><i class="bi bi-instagram"></i></a>
+    <a href="#" class="footer-link"><i class="bi bi-twitter-x"></i></a>
+  </div>
+</footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

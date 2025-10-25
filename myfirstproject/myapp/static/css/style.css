@@ -1,0 +1,199 @@
+/* ================== GLOBAL ================== */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(180deg, #0a0a0a, #1b1b1b);
+  color: #fff;
+  overflow-x: hidden;
+}
+
+.main-content {
+  width: 100%;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+/* ================== HERO SECTION ================== */
+.hero {
+  width: 100%;
+  padding: 120px 20px 60px 20px;
+  background: linear-gradient(180deg, #0a0a0a, #1b1b1b);
+  text-align: center;
+  color: #fff;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #ffc107, #f7c948);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #ddd;
+  margin: 15px 0 25px 0;
+  animation: fadeInUp 1.2s ease forwards;
+}
+
+.hero .btn-warning {
+  background: linear-gradient(90deg, #ffc107, #f7c948);
+  color: #000;
+  padding: 12px 30px;
+  border-radius: 12px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.hero .btn-warning:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 20px rgba(255, 193, 7, 0.1);
+}
+
+/* ================== CAR CARDS ================== */
+h1{
+  color:lightblue;
+  border-bottom:2px solid #493908;
+  margin-bottom: 20px;
+  padding-bottom:20px;
+
+}
+.cars-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  padding: 20px;
+  width: 100%;
+}
+
+.car-card {
+  background: rgba(25, 25, 25, 0.95);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(255, 193, 7, 0.2);
+  padding: 20px 15px;
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  border: 2px solid #292006;
+}
+
+.car-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px rgba(255, 193, 7, 0.1);
+}
+
+.car-card h2 {
+  font-size: 1.5rem;
+   margin: 20px;
+  padding: 5px;
+  border: 2px solid #493908;
+  border-radius: 8px;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.car-card h3 {
+  font-size: 1.1rem;
+  margin: 20px;
+  padding: 5px;
+  border: 2px solid #292006;
+  border-radius: 8px;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.car-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  /* transition: transform 0.4s ease, box-shadow 0.4s ease; */
+}
+
+.car-card img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 10px rgba(255, 193, 7, 0.1);
+}
+
+.btn-view {
+  background: linear-gradient(90deg, #ffc107, #f7c948);
+  color: #000;
+  border: none;
+  border-radius: 12px;
+  width: 80%;
+  padding: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-view:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 20px rgba(255, 193, 7, 0.5);
+}
+
+/* ================== FOOTER ================== */
+footer {
+  background: linear-gradient(90deg, #1c3fb9, #6b5bff);
+  color: #fff;
+  text-align: center;
+  padding: 15px 0;
+  margin-top: 0;
+}
+
+/* ================== ANIMATIONS ================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================== RESPONSIVE ================== */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .car-card img {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+  }
+
+  .car-card img {
+    height: 180px;
+  }
+
+  .btn-view {
+    font-size: 0.95rem;
+    padding: 8px;
+  }
+}
