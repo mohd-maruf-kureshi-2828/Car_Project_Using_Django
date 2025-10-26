@@ -14,7 +14,9 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 # ALLOWED_HOSTS
-ALLOWED_HOSTS = ['car-project-using-django.onrender.com', 'www.car-project-using-django.onrender.com']
+# ALLOWED_HOSTS = ['car-project-using-django.onrender.com', 'www.car-project-using-django.onrender.com']
+ALLOWED_HOSTS = ['car-project-using-django.onrender.com', 'localhost', '127.0.0.1']
+
 
 # Installed Apps
 INSTALLED_APPS = [
