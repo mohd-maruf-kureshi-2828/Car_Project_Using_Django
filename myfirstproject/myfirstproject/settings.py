@@ -1,24 +1,18 @@
 from pathlib import Path
 from dotenv import load_dotenv
 import os
-import dj_database_url 
+import dj_database_url
 
-# BASE_DIR
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Load .env file
+# Load .env
 load_dotenv()
 
-# SECRET_KEY & DEBUG
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-# ALLOWED_HOSTS
-# ALLOWED_HOSTS = ['car-project-using-django.onrender.com', 'www.car-project-using-django.onrender.com']
-ALLOWED_HOSTS = ['car-project-using-django.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['car-project-using-django.onrender.com']
 
-
-# Installed Apps
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -29,10 +23,9 @@ INSTALLED_APPS = [
     'myapp',
 ]
 
-# Middleware
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # for static files in production
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # static files
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -41,7 +34,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# URLs & Templates
 ROOT_URLCONF = 'myfirstproject.urls'
 
 TEMPLATES = [
@@ -61,16 +53,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'myfirstproject.wsgi.application'
 
-# Database (MySQL)
+# Database (PostgreSQL Render)
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.getenv("DATABASE_URL"),
+        default=os.getenv('DATABASE_URL'),
         conn_max_age=600,
         ssl_require=True
     )
 }
 
-# Password Validators
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
@@ -78,19 +69,15 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
-# Internationalization
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# Static & Media for Render Deployment
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# Default Primary Key Field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
