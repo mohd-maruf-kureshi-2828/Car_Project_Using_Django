@@ -1,5 +1,10 @@
-myenv/
+# Python/Django
+*.pyc
 __pycache__/
 db.sqlite3
-*.pyc
-staticfiles/
+*.log
+
+# Environment files
+.env
+myenv/
+
