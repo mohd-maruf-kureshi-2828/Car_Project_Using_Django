@@ -7,7 +7,7 @@ SECRET_KEY = 'django-insecure-7@un87)q0jf$arnp=o&dkb0*ddr=xagccthv1mdoe7-n#m3^+#
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['car-project-using-django.onrender.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
