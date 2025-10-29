@@ -3,7 +3,8 @@ from .models import Cars
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
 from .forms import ContactForm
-
+from django.http import HttpResponse
+from django.contrib.auth.models import User
 
 
 # Create your views here.
@@ -30,3 +31,10 @@ def Contact(request):
         form = ContactForm()
 
     return render(request, 'myapp/contact.html', {'form': form})
+
+def create_admin(request):
+    if not User.objects.filter(username="admin").exists():
+        User.objects.create_superuser("admin", "admin@example.com", "adminpassword")
+        return HttpResponse("✅ Superuser created successfully!")
+    else:
+        return HttpResponse("⚠️ Superuser already exists!")

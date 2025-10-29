@@ -23,13 +23,13 @@ from django.views.static import serve
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('myapp.urls')),
-]
+]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 
-# ✅ Local development (jab DEBUG=True ho)
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-else:
-    # ✅ Render (production) ke liye — ye media serve karega
-    urlpatterns += [
-        re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
-    ]
+# # ✅ Local development (jab DEBUG=True ho)
+# if settings.DEBUG:
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# else:
+#     # ✅ Render (production) ke liye — ye media serve karega
+#     urlpatterns += [
+#         re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
+#     ]
