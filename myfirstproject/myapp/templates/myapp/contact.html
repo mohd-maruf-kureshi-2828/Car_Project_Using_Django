@@ -111,6 +111,13 @@ button:hover {
 
 <div class="contact-container">
   <h1>Contact Me 📩</h1>
+   {% if messages %}
+    {% for message in messages %}
+      <div class="success-message">
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
   <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
