@@ -1,33 +1,107 @@
 {% extends 'layout.html' %}
 {% block content %}
 
-<section class="hero">
-  <h1 class="text-white">Explore The Future of Cars </h1>
-  <p>Discover our handpicked collection of luxury, sports, and electric cars.</p>
-  <button class="btn btn-warning fw-bold" id="discover-btn">Discover More</button>
+<!-- Hero Section -->
+<section class="hero text-center text-white d-flex flex-column justify-content-center align-items-center">
+  <h1 class="fw-bold display-4 mb-3">Explore The Future of Cars </h1>
+  <p class="lead mb-4">Discover our handpicked collection of luxury, sports, and electric cars — crafted for performance and innovation.</p>
+  <button class="btn btn-warning fw-bold px-4 py-2" id="discover-btn">Discover More</button>
 </section>
 
-<h1 id="cars" class="text-center text-w mt-5 mb-4 fw-bold">🚗 Our Cars Collection</h1>
+<!-- Cars Collection Section -->
+<section class="cars-section py-5">
+  <h1 id="cars" class="text-center text-white fw-bold mb-5">🚗 Our Exclusive Car Collection</h1>
 
-<div class="cars-container">
-  {% for car in mycars %}
-  <div class="car-card">
-    <h2 class="text-white fw-bold">{{ car.name }}</h2>
-    <img src="{{ car.image.url }}" alt="{{ car.name }}">
-    <h3 class="text-white">{{ car.type }}</h3>
-    <p class="text-warning fw-bold">Price: ₹{{ car.price }}</p>
-    <a href="{% url 'car_details' car.id %}">
-      <button class="btn-view">View Description</button>
-    </a>
+  <div class="cars-container">
+    {% for car in mycars %}
+    <div class="car-card fade-in">
+      <img src="{{ car.image.url }}" alt="{{ car.name }}" class="car-image">
+      <div class="car-info">
+        <h2 class="text-white fw-bold">{{ car.name }}</h2>
+        <h5 class="text-light mb-2">{{ car.type }}</h5>
+        <p class="text-warning fw-bold mb-3">Price: ₹{{ car.price }}</p>
+        <a href="{% url 'car_details' car.id %}">
+          <button class="btn btn-outline-warning fw-bold">View Details</button>
+        </a>
+      </div>
+    </div>
+    {% endfor %}
   </div>
-  {% endfor %}
-</div>
+</section>
 
+<!-- Smooth Scroll Script -->
 <script>
   document.getElementById('discover-btn').addEventListener('click', function() {
     document.getElementById('cars').scrollIntoView({ behavior: 'smooth' });
   });
 </script>
 
+<!-- Internal CSS -->
+<style>
+  /* 🔹 Balanced Hero Section */
+  .hero {
+    min-height: 70vh; /* reduced from 90vh */
+    background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.6)),
+                url('/static/images/car-bg.jpg') center/cover no-repeat;
+    text-shadow: 1px 1px 10px rgba(0,0,0,0.8);
+    padding: 100px 20px 60px;
+  }
+
+  .cars-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 0 2rem;
+  }
+
+  .car-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    overflow: hidden;
+    text-align: center;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .car-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+  }
+
+  .car-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .car-info {
+    padding: 1rem;
+  }
+
+  /* Fade-in animation */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Small screens adjustment */
+  @media (max-width: 768px) {
+    .hero {
+      min-height: 60vh;
+      padding: 80px 15px 40px;
+    }
+  }
+</style>
 
 {% endblock %}
+
+

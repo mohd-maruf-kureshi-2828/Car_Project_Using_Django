@@ -7,4 +7,11 @@ db.sqlite3
 # Environment files
 .env
 myenv/
+/staticfiles/
+/mediafiles/
+/media/
 
+# IDE files
+.vscode/
+.idea/
+.DS_Store
