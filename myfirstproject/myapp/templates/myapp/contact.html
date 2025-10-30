@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
 <style>
+/* Reset + Layout fix */
 body {
   background: linear-gradient(135deg, #0a0a0a, #1b1b1b);
   color: #fff;
@@ -10,10 +11,53 @@ body {
   padding: 0;
 }
 
+/* Navbar alignment fix */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(10px);
+}
+
+nav .logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #f7c948;
+}
+
+nav .menu {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+nav .menu a {
+  text-decoration: none;
+  color: #fff;
+  transition: 0.3s ease;
+}
+
+nav .menu a:hover {
+  color: #f7c948;
+  text-shadow: 0 0 8px #f7c948;
+}
+
+nav .hamburger {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #f7c948;
+}
+
 /* Container */
 .contact-container {
   max-width: 600px;
-  margin: 60px auto;
+  margin: 80px auto;
   background: rgba(25,25,25,0.95);
   padding: 50px 40px;
   border-radius: 25px;
@@ -45,7 +89,7 @@ form .form-control {
   width: 100%;
   padding: 14px;
   margin-bottom: 20px;
-  border: none;
+  border: 2px solid #444;
   border-radius: 12px;
   outline: none;
   background: #222;
@@ -54,14 +98,23 @@ form .form-control {
   transition: all 0.3s ease-in-out;
 }
 
-form .form-control::placeholder {
-  color: #ccc;
-}
-
+/* ✅ Text & border white on hover or focus */
+form .form-control:hover,
 form .form-control:focus {
   background: #333;
+  border-color: #fff;
   box-shadow: 0 0 10px #f7c948;
+  color: #fff;
   transform: scale(1.02);
+}
+
+form .form-control::placeholder {
+  color: #bbb;
+}
+
+/* ✅ Textarea and input text white always */
+textarea, input {
+  color: #fff;
 }
 
 /* Submit button */
@@ -78,14 +131,12 @@ button {
   transition: all 0.3s ease-in-out;
 }
 
-textarea,input{
-  color: white;
-
-}
-textarea::placeholder, input::placeholder {
-  color: #ccc; /* placeholder light grey */
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 20px rgba(255,200,0,0.6);
 }
 
+/* ✅ Success message */
 .success-message {
   background-color: rgba(255,200,0,0.1);
   color: #f7c948;
@@ -95,13 +146,6 @@ textarea::placeholder, input::placeholder {
   box-shadow: 0 0 10px rgba(255,200,0,0.2);
   margin-top: 20px;
   font-weight: 500;
-}
-
-
-
-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 5px 20px rgba(255,200,0,0.6);
 }
 
 /* Animations */
@@ -117,6 +161,8 @@ button:hover {
 
 /* Responsive */
 @media (max-width: 768px) {
+  nav .menu { display: none; }
+  nav .hamburger { display: block; }
   .contact-container {
     margin: 20px;
     padding: 35px 25px;
@@ -149,6 +195,7 @@ button:hover {
 </div>
 
 {% endblock %}
+
 
 
 
