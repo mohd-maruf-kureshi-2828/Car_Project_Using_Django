@@ -93,35 +93,31 @@
     }
   }
 
-  /* Small screens adjustment */
-  @media screen(max-width:992px) {
-    .cars-container {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-      padding:0 1rem;
-  }
-}
-
-@media screen(max-width:600px) {
-    .cars-container {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-      padding:0 1rem;
-}
-
-  @media screen(max-width:400) {
-    .cars-container {
-      grid-template-columns: 1fr;
-    }
-  }
-    
+  /* 🔹 Small screens adjustment (for hero) */
   @media (max-width: 768px) {
     .hero {
       min-height: 60vh;
       padding: 80px 15px 40px;
     }
   }
+
+  /* 🔹 Choti screen par 2 cards ek line me */
+  @media (max-width: 768px) {
+    .cars-container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      padding: 0 1rem;
+    }
+  }
+
+  /* 🔹 Bahut choti screen (below 420px) par 1 card */
+  @media (max-width: 420px) {
+    .cars-container {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
+
 
 {% endblock %}
 
