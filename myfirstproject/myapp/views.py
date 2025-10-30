@@ -21,17 +21,30 @@ def About(request):
 
 
 def Contact(request):
-    if request.method == "POST":
+    # if request.method == "POST":
+    #     form = ContactForm(request.POST)
+    #     if form.is_valid():
+    #         form.save()
+    #         messages.success(request, "Thank you for contacting us! We'll get back to you soon.")
+    #         return redirect('contact')
+    # else:
+    #     form = ContactForm()
+
+    # return render(request, 'myapp/contact.html', {'form': form})
+    form_submitted = False  # Track karega ke form submit hua ya nahi
+
+    if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, "Thank you for contacting us! We'll get back to you soon.")
-            return redirect('contact')
+            form_submitted = True  # True ho gaya matlab form submit hua
     else:
         form = ContactForm()
 
-    return render(request, 'myapp/contact.html', {'form': form})
-
+    return render(request, 'myapp/contact.html', {
+        'form': form,
+        'form_submitted': form_submitted
+    })
 def create_admin(request):
     if not User.objects.filter(username="admin").exists():
         User.objects.create_superuser("admin", "admin@example.com", "adminpassword")
