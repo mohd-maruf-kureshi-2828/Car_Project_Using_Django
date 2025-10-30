@@ -94,6 +94,27 @@
   }
 
   /* Small screens adjustment */
+  @media screen(max-width:992px) {
+    .cars-container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      padding:0 1rem;
+  }
+}
+
+@media screen(max-width:600px) {
+    .cars-container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      padding:0 1rem;
+}
+
+  @media screen(max-width:400) {
+    .cars-container {
+      grid-template-columns: 1fr;
+    }
+  }
+    
   @media (max-width: 768px) {
     .hero {
       min-height: 60vh;
