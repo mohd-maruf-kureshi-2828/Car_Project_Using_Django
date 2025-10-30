@@ -3,7 +3,7 @@
 
 <!-- Hero Section -->
 <section class="hero text-center text-white d-flex flex-column justify-content-center align-items-center">
-  <h1 class="fw-bold display-4 mb-3">Explore The Future of Cars </h1>
+  <h1 class="fw-bold display-4 mb-3">Explore The Future of Cars 🚘</h1>
   <p class="lead mb-4">Discover our handpicked collection of luxury, sports, and electric cars — crafted for performance and innovation.</p>
   <button class="btn btn-warning fw-bold px-4 py-2" id="discover-btn">Discover More</button>
 </section>
@@ -93,32 +93,16 @@
     }
   }
 
-  /* 🔹 Small screens adjustment (for hero) */
+  /* Small screens adjustment */
   @media (max-width: 768px) {
     .hero {
       min-height: 60vh;
       padding: 80px 15px 40px;
     }
   }
-
-  /* 🔹 Choti screen par 2 cards ek line me */
-  @media (max-width: 768px) {
-    .cars-container {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-      padding: 0 1rem;
-    }
-  }
-
-  /* 🔹 Bahut choti screen (below 420px) par 1 card */
-  @media (max-width: 420px) {
-    .cars-container {
-      grid-template-columns: 1fr;
-    }
-  }
 </style>
 
-
 {% endblock %}
+
 
 
