@@ -1,39 +1,21 @@
 {% extends 'layout.html' %}
 {% block content %}
 
-<!-- 🌌 Hero Section -->
+<!-- Hero Section -->
 <section class="hero text-center text-white d-flex flex-column justify-content-center align-items-center">
-<<<<<<< HEAD
   <h1 class="fw-bold display-4 mb-3">Explore The Future of Cars 🚘</h1>
   <p class="lead mb-4">Discover our handpicked collection of luxury, sports, and electric cars — crafted for performance and innovation.</p>
-=======
-  <h1 class="fw-bold display-4 mb-3">Explore The Future of Cars</h1>
-  <p class="lead mb-4">
-    Discover our handpicked collection of luxury, sports, and electric cars — crafted for performance and innovation.
-  </p>
->>>>>>> 9fa8607da7507ee967c274790cf77ea62f3153f7
   <button class="btn btn-warning fw-bold px-4 py-2" id="discover-btn">Discover More</button>
 </section>
 
-<!-- 🚗 Cars Collection Section -->
+<!-- Cars Collection Section -->
 <section class="cars-section py-5">
-  <h1 id="cars" class="text-center text-white fw-bold mb-4">
-    🚗 Our Exclusive Car Collection
-  </h1>
+  <h1 id="cars" class="text-center text-white fw-bold mb-5">🚗 Our Exclusive Car Collection</h1>
 
-  <!-- 🔹 Filter Buttons -->
-  <div class="filter-buttons text-center mb-5">
-    <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="SUV">SUV</button>
-    <button class="filter-btn" data-filter="Electric">Electric</button>
-    <button class="filter-btn" data-filter="Luxury">Luxury</button>
-  </div>
-
-  <!-- 🔹 Cars Grid -->
   <div class="cars-container">
     {% for car in mycars %}
-    <div class="car-card fade-in" data-category="{{ car.type }}">
-      <img src="{{ car.image.url }}" alt="{{ car.name }}" class="car-image" />
+    <div class="car-card fade-in">
+      <img src="{{ car.image.url }}" alt="{{ car.name }}" class="car-image">
       <div class="car-info">
         <h2 class="text-white fw-bold">{{ car.name }}</h2>
         <h5 class="text-light mb-2">{{ car.type }}</h5>
@@ -47,91 +29,31 @@
   </div>
 </section>
 
-<!-- 🧭 Smooth Scroll Script -->
+<!-- Smooth Scroll Script -->
 <script>
-  document.getElementById("discover-btn").addEventListener("click", function () {
-    document.getElementById("cars").scrollIntoView({ behavior: "smooth" });
-  });
-
-  // 🔹 Filter Functionality
-  const filterBtns = document.querySelectorAll(".filter-btn");
-  const carCards = document.querySelectorAll(".car-card");
-
-  filterBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      document.querySelector(".filter-btn.active")?.classList.remove("active");
-      btn.classList.add("active");
-
-      const filter = btn.getAttribute("data-filter");
-      carCards.forEach((card) => {
-        if (filter === "all" || card.getAttribute("data-category") === filter) {
-          card.style.display = "block";
-        } else {
-          card.style.display = "none";
-        }
-      });
-    });
+  document.getElementById('discover-btn').addEventListener('click', function() {
+    document.getElementById('cars').scrollIntoView({ behavior: 'smooth' });
   });
 </script>
 
-<!-- 🎨 Full CSS -->
+<!-- Internal CSS -->
 <style>
-  /* 🌌 Hero Section */
+  /* 🔹 Balanced Hero Section */
   .hero {
-    min-height: 70vh;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)),
-      url("/static/images/car-bg.jpg") center/cover no-repeat;
-    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.8);
+    min-height: 70vh; /* reduced from 90vh */
+    background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.6)),
+                url('/static/images/car-bg.jpg') center/cover no-repeat;
+    text-shadow: 1px 1px 10px rgba(0,0,0,0.8);
     padding: 100px 20px 60px;
   }
 
-  /* 🚘 Cars Section Base */
-  .cars-section {
-    background: #000;
-    padding-top: 70px;
-    padding-bottom: 100px;
-  }
-
-  .cars-section h1 {
-    margin-bottom: 40px;
-  }
-
-  /* 🔹 Filter Buttons */
-  .filter-buttons {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .filter-btn {
-    background: transparent;
-    border: 2px solid #ffc107;
-    color: #ffc107;
-    padding: 8px 20px;
-    border-radius: 25px;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    cursor: pointer;
-  }
-
-  .filter-btn:hover,
-  .filter-btn.active {
-    background: #ffc107;
-    color: #000;
-    box-shadow: 0 0 15px #ffc107;
-  }
-
-  /* 🔹 Cars Grid Layout */
   .cars-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
-    padding: 0 3rem;
-    justify-content: center;
+    padding: 0 2rem;
   }
 
-  /* 🔹 Car Card */
   .car-card {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 20px;
@@ -143,21 +65,21 @@
 
   .car-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
   }
 
   .car-image {
     width: 100%;
     height: 220px;
     object-fit: cover;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
   }
 
   .car-info {
     padding: 1rem;
   }
 
-  /* 🔹 Fade Animation */
+  /* Fade-in animation */
   .fade-in {
     opacity: 0;
     transform: translateY(30px);
@@ -171,72 +93,14 @@
     }
   }
 
-<<<<<<< HEAD
   /* Small screens adjustment */
   @media (max-width: 768px) {
     .hero {
       min-height: 60vh;
       padding: 80px 15px 40px;
-=======
-  /* 🔹 Responsive Fixes */
-
-  /* Tablet: 2 Cards per row */
-  @media (max-width: 992px) {
-    .cars-container {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.8rem;
-      padding: 0 2rem;
-    }
-  }
-
-  /* Mobile (below 600px): still 2 cards */
-  @media (max-width: 600px) {
-    .cars-container {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.2rem;
-      padding: 0 1rem;
-    }
-
-    .car-image {
-      height: 160px;
-    }
-
-    .car-info h2 {
-      font-size: 1.1rem;
-    }
-
-    .car-info h5 {
-      font-size: 0.9rem;
-    }
-
-    .car-info p {
-      font-size: 0.85rem;
-    }
-
-    .filter-btn {
-      padding: 6px 16px;
-      font-size: 0.9rem;
-    }
-  }
-
-  /* Very small devices (below 420px): 1 card */
-  @media (max-width: 420px) {
-    .cars-container {
-      grid-template-columns: 1fr;
-      padding: 0 1rem;
-    }
-
-    .cars-section {
-      padding-bottom: 70px;
->>>>>>> 9fa8607da7507ee967c274790cf77ea62f3153f7
     }
   }
 </style>
 
 {% endblock %}
-<<<<<<< HEAD
 
-
-
-=======
->>>>>>> 9fa8607da7507ee967c274790cf77ea62f3153f7
