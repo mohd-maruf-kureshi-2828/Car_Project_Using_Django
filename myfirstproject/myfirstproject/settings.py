@@ -65,17 +65,11 @@ WSGI_APPLICATION = 'myfirstproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME':os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': 'dpg-d6a9si2li9vc73akn2gg-a.oregon-postgres.render.com',
-        'PORT': os.getenv('DB_PORT'),
-        'OPTIONS':{
-            'sslmode': 'require',
-        }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 # Debug local ke liye True rakh sakte ho
 DEBUG = True
